@@ -9,8 +9,11 @@ class YandexApiService(object):
     def query(self, method, params=None):
         query_params = {'token': self.token, 'method': method} 
         if params: query_params['param'] = params 
-        
-        jdata = json.dumps(query_params, ensure_ascii=False).encode('utf8') 
+        jdata = json.dumps(query_params, ensure_ascii=False).encode('utf8')
         response = urllib2.urlopen(self.sandbox_url, jdata).read()
         decoded_responce = json.loads(response)
-        return decoded_responce["data"]
+        try:
+            return decoded_responce["data"]
+        except:
+            print decoded_responce
+            raise
