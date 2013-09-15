@@ -14,7 +14,8 @@ banners = client.query('GetBanners', {'CampaignIDS': even_campaign_ids})
  
 uneven_banner_ids = []
 for banner in banners:
-    if banner['BannerID'] % 2 == 0:
+    if banner['BannerID'] % 2 != 0:
         uneven_banner_ids.append(banner['BannerID'])
- 
+
+print uneven_banner_ids         
 client.query('StopBanners', {'BannerIDS': uneven_banner_ids})
