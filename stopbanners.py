@@ -9,7 +9,7 @@ activecampaigns =  client.query('GetCampaignsListFilter', {'Filter':{'IsActive':
 even_campaign_ids = []
 grouped_odd_banners = {} 
  
-for campaign in campaigns:
+for campaign in activecampaigns:
     campaign_id = campaign['CampaignID']
     if campaign_id % 2 == 0:
         grouped_odd_banners[campaign_id] = []
